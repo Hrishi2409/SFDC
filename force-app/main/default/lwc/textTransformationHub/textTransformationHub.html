@@ -1,0 +1,83 @@
+<template>
+    <lightning-card title="TEXT TRANFORMATION HUB">
+        <lightning-tabset >
+            <lightning-tab onactive={handleActive} data-type="uppercase" label="UpperCase" value="uppercase">
+                <div class="slds-col">
+                    <div class="slds-form-element">
+
+                        <label class="slds-form-element__label" for="text-input-id-52">
+                            <abbr class="slds-required" title="required" aria-hidden="true">*</abbr>
+                            Change to UpperCase
+                        </label>
+
+                        <div class="slds-form-element__control">
+                            <input placeholder="Enter text for uppercase conversion" type="text"
+                                class="slds-input" oninput={handleChange} />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="slds-col slds-m-top_large">
+                    <button class="slds-button slds-button_brand" data-type="uppercase" onclick={handleTransform}>
+                        {currentTab.buttonLabel}
+                    </button>
+                </div>
+
+                <p>{result}</p>
+            </lightning-tab>
+
+            <lightning-tab onactive={handleActive} data-type="lowercase" label="LowerCase" value="lowercase">
+                <div class="slds-col">
+                    <div class="slds-form-element">
+
+                        <label class="slds-form-element__label" for="text-input-id-52">
+                            <abbr class="slds-required" title="required" aria-hidden="true">*</abbr>
+                            Change to LowerCase
+                        </label>
+
+                        <div class="slds-form-element__control">
+                            <input  placeholder="Enter text for lowercase conversion" type="text"
+                                class="slds-input" oninput={handleChange} />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="slds-col slds-m-top_large">
+                    <button class="slds-button slds-button_brand" data-type="lowercase" onclick={handleTransform}>
+                        {currentTab.buttonLabel}
+                    </button>
+                </div>
+
+                <p>{result}</p>
+            </lightning-tab>
+            <lightning-tab onactive={handleActive} data-type="capitalize" label="Capitalize" value="capitalize">
+                <div class="slds-col">
+                    <div class="slds-form-element">
+
+                        <label class="slds-form-element__label" for="text-input-id-52">
+                            <abbr class="slds-required" title="required" aria-hidden="true">*</abbr>
+                            Capitalize text
+                        </label>
+
+                        <div class="slds-form-element__control">
+                            <input placeholder="Enter text for capitalize conversion" type="text"
+                                class="slds-input" oninput={handleChange} />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="slds-col slds-m-top_large">
+                    <button class="slds-button slds-button_brand" data-type="capitalize" onclick={handleTransform}>
+                        {currentTab.buttonLabel}
+                    </button>
+                </div>
+
+                <p>{result}</p>
+            </lightning-tab>
+        </lightning-tabset>
+
+    </lightning-card>
+</template>
