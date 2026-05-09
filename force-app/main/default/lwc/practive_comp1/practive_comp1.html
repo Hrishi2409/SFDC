@@ -1,0 +1,32 @@
+<template>
+    <div class="slds-grid slds-gutters slds-align-end">
+
+        <!-- Input -->
+        <div class="slds-col">
+            <div class="slds-form-element">
+
+                <label class="slds-form-element__label" for="text-input-id-52">
+                    <abbr class="slds-required" title="required" aria-hidden="true">*</abbr>
+                    Change to UpperCase
+                </label>
+
+                <div class="slds-form-element__control">
+                    <input id="text-input-id-52" placeholder="Enter your text......" type="text" class="slds-input"
+                        oninput={handleChange} />
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="slds-col slds-m-top_large">
+            <button class="slds-button slds-button_brand" onclick={handleClick} disabled={isButtonDisabled}>
+                Click me!
+            </button>
+        </div>
+
+    </div>
+
+    <p>{name}</p>
+
+</template>
