@@ -7,6 +7,6 @@ trigger caseTrigger on Case (after insert, after update, after delete, after und
         caseTriggerHandler.countStatusAccount(trigger.new,trigger.oldMap);
     }
     else if(trigger.isAfter && trigger.isDelete){
-           caseTriggerHandler.countStatusAccount(trigger.old,null);
+           caseTriggerHandler.countStatusAccount(null,trigger.oldMap);
     }
 }

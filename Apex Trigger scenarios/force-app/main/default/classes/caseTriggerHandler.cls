@@ -9,7 +9,28 @@ public with sharing class caseTriggerHandler {
 
         Map<Id,Account> accountsToUpdate = new Map<Id,Account>();
 
-        if(!newList.isEmpty()){
+        // Determine whether we are processing incoming records or deleted records
+        List<Case> targetCases = (newList != null) ? newList : oldMap.values();
+        
+        for (Case c : targetCases) {
+            if (oldMap != null && newList != null) { // Update Operation
+                Case oldCase = oldMap.get(c.Id);
+                if (oldCase.AccountId != c.AccountId) {
+                    if (oldCase.AccountId != null) accIds.add(oldCase.AccountId);
+                    if (c.AccountId != null) accIds.add(c.AccountId);
+                } else if (oldCase.Status != c.Status) {
+                    if (c.AccountId != null) accIds.add(c.AccountId);
+                }
+            } else { // Insert, Delete, or Undelete Operations
+                if (c.AccountId != null) accIds.add(c.AccountId);
+            }
+        }
+
+        if (accIds.isEmpty()) {
+            return;
+        }
+
+        /* if(!newList.isEmpty()){
             for(Case newCase : newList){
                 if(oldMap != null){
                     Case oldCase = oldMap.get(newCase.Id);
@@ -25,7 +46,7 @@ public with sharing class caseTriggerHandler {
                     }
                 }
             }
-        }
+        } */
 
         if(!accIds.isEmpty()){
               for(Account acc: [Select Id,Number_of_escalated_cases__c,Number_of_new_cases__c,Number_of_working_cases__c,
